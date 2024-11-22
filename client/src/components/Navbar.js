@@ -1,6 +1,5 @@
 import React from "react";
-import "../resources/navbar.css"
-import {Link}from "react-router-dom"
+import {Link} from 'react-router-dom'
 function Navbar() {
   function logout(){
     localStorage.removeItem('currentUser')
@@ -12,9 +11,9 @@ function Navbar() {
     <div>
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/home">
+        <Link class="navbar-brand" to="/home">
           Jessy Room Booking Service
-        </a>
+        </Link>
         <button
           class="navbar-toggler"
           type="button"
@@ -30,26 +29,26 @@ function Navbar() {
           <ul class="navbar-nav ms-auto mr-3" >
             {user ? (<>
               <div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle"style={{ color: "MistyRose",backgroundColor:'black' }}  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <Link class="btn btn-secondary dropdown-toggle"style={{ color: "MistyRose",backgroundColor:'black' }}  to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
   <i class="fa fa-user"></i> {user.name}
-  </a>
+  </Link>
 
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="/profile">Profile</a></li>
-    {user.isAdmin &&(<li><a class="dropdown-item" href="/admins">Admin</a></li>)}
-    <li><a class="dropdown-item" href="/" onClick={logout}>Logout</a></li>
+    <li><Link class="dropdown-item" to="/profile">Profile</Link></li>
+    {user.isAdmin &&(<li><Link class="dropdown-item" to="/admins">Admin</Link></li>)}
+    <li><Link class="dropdown-item" to="/" onClick={logout}>Logout</Link></li>
  
   </ul>
 </div></>):(<>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/register">
+              <Link class="nav-link" aria-current="page" to="/register">
                 Register
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login">
+              <Link class="nav-link" to="/login">
                 Login
-              </a>
+              </Link>
             </li>
            </>)}
           </ul>
