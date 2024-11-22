@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 function AddRooms() {
+  const navigate =useNavigate()
 const [name,setName]= useState('')
 const [type,setType]= useState('')
 const [maxCount,setMaxCount]= useState('')
@@ -28,7 +30,7 @@ const [loading, setLoading] = useState('');
       const room = response.data;
       setLoading(false);
       Swal.fire('Congratulations', 'Room created successfully', 'success').then(() => {
-        window.location.href = '/admins';
+        navigate('/admins')
       });
 
     } catch (error) {

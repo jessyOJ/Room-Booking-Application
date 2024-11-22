@@ -8,6 +8,7 @@ import moment from "moment";
 import StripeCheckout from "react-stripe-checkout";
 import Swal from 'sweetalert2'
 import AOS from 'aos';
+import { useNavigate } from "react-router-dom";
 import 'aos/dist/aos.css'; 
 AOS.init(
     {duration:1000}
@@ -19,7 +20,7 @@ function Bookingscreen() {
   const [error, setError] = useState();
   const [success, setSuccess] = useState(false);
   const [totalAmount, setTotalAmount] = useState("");
-
+const navigate =useNavigate()
   const from = moment(fromDate, "DD-MM-YYYY");
   const to = moment(toDate, "DD-MM-YYYY");
 
@@ -31,7 +32,7 @@ function Bookingscreen() {
     const user= JSON.parse(localStorage.getItem('currentUser'))
 
     if(!user || user.name===''){
-      window.location.href='/login'
+      navigate('/login')
       
     }
     const fetchRoom = async () => {
@@ -75,7 +76,7 @@ function Bookingscreen() {
       );
       setLoading(false)
       Swal.fire('Congratulations','Room has been booked successfully','success').then((result)=>{
-        window.location.href='/bookings'
+        navigate('/bookings')
       })
      
     } catch (err) {

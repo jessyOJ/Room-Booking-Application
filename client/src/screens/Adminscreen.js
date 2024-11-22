@@ -4,8 +4,10 @@ import { Bookings } from '../AdminComponents/Bookings';
 import Rooms from '../AdminComponents/Rooms';
 import Users from '../AdminComponents/Users';
 import AddRooms from '../AdminComponents/AddRooms';
+import { useNavigate } from 'react-router-dom';
 const { TabPane } = Tabs;
 function Adminscreen() {
+  const navigate =useNavigate()
   useEffect(() => {
     const currentUser = localStorage.getItem('currentUser');
   
@@ -15,11 +17,11 @@ function Adminscreen() {
   
       // Check if isAdmin exists and is false
       if (!parsedUser.isAdmin) {
-        window.location.href = '/home';
+        navigate('/home')
       }
     } else {
       // Redirect to login if currentUser is not found
-      window.location.href = '/login';
+      navigate('/login')
     }
   }, []);
   

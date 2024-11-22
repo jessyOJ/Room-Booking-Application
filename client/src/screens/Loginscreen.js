@@ -3,14 +3,15 @@ import axios from 'axios'
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Success from "../components/Success"
-
+import { useNavigate } from 'react-router-dom';
+import { message } from 'antd';
 function Loginscreen() {
 const [email,setEmail]= useState('')
 const[password,setPassword]= useState('')
 const [loading, setLoading] = useState(false);
 const[error,setError]=useState()
 const[success,setSuccess]=useState()
-
+const navigate = useNavigate()
 async function login(){
 setError('')
 setSuccess(false)
@@ -23,14 +24,14 @@ setSuccess(false)
         setLoading(true)
         const response = await axios.post('/api/hotel-booking/login',user)
         const result =response.data
-
+        message.success('login successful')
         setLoading(false)
         setSuccess(true)
 
-        setTimeout(() => {
+     
             localStorage.setItem('currentUser', JSON.stringify(result));
-            window.location.href='/home'
-        }, 1000);
+            navigate('/home')
+       
 
     }catch(error){
         setLoading(false)

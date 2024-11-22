@@ -1,6 +1,6 @@
-const {Rooms} = require('../model/Rooms')
-const express = require('express')
+import express from 'express'
 const router = express.Router()
+import Rooms from'../model/Rooms.js'
 router.post('/createRoom',async(req,res)=>{
   try {
     const rooms = new Rooms(req.body);
@@ -34,4 +34,4 @@ router.get('/getRooms',async(req,res)=>{
     res.status(400).send(error.message)
   }
 })
-module.exports=router
+export default router

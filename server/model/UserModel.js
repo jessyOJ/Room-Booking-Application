@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const Joi = require('joi')
-const bcrypt = require('bcryptjs')
+import mongoose from'mongoose'
+import Joi from 'joi'
+import bcrypt from 'bcryptjs'
 const userSchema=mongoose.Schema({
     name:{
         type:String,
@@ -59,5 +59,5 @@ function validateUser(user){
     })
    
     const User = mongoose.model('users',userSchema)
-    exports.User=User;
-    exports.validateUser=validateUser
+    export default User;
+    export {validateUser}

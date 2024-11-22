@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
-const BookingsModel = require('../model/BookingsModel')
-const {Rooms} = require('../model/Rooms')
+import Bookings from "../model/BookingsModel.js"
+import Rooms from'../model/Rooms.js'
 // const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 // const { v4: uuidv4 } = require('uuid');
 router.post('/bookings',async(req,res)=>{
@@ -82,4 +82,4 @@ router.get('/getAllBookings', async(req,res)=>{
     const bookings =await  BookingsModel.find()
     res.send(bookings)
 })
-module.exports=router
+export default router

@@ -1,5 +1,5 @@
-const {User,validateUser} = require('../model/UserModel')
-const express = require('express')
+import User,{validateUser} from '../model/UserModel.js'
+import express from 'express'
 const router = express.Router()
 
 router.post('/register' ,async(req,res)=>{
@@ -31,5 +31,4 @@ router.get('/getAllUsers',async(req,res)=>{
     const users = await User.find()
     res.send(users)
 })
-
-module.exports=router
+export default router

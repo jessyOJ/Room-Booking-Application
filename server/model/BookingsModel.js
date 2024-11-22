@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const bookingSchema = mongoose.Schema({
     room:{
         type:String, required:true
@@ -31,4 +31,4 @@ const bookingSchema = mongoose.Schema({
 
 },{timestamps:true})
 const Bookings = mongoose.model('bookings',bookingSchema)
-module.exports=Bookings
+export default Bookings

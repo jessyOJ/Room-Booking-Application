@@ -3,6 +3,8 @@ import axios from 'axios'
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Success from "../components/Success"
+import {useNavigate,Link}from  "react-router-dom"
+import { message } from 'antd';
 function Registerscreen() {
 const [name,setName] = useState('')
 const [email,setEmail]= useState('')
@@ -11,7 +13,7 @@ const [cpassword,setCpassword]=useState('')
 const [loading, setLoading] = useState(false);
 const[error,setError]=useState(false)
 const[success,setSuccess]=useState(false)
-
+const navigate=useNavigate()
 async function register(){
  
   setError('');
@@ -25,17 +27,17 @@ async function register(){
     try {
       setLoading(true)
       const response = (await axios.post('/api/hotel-booking/register',user)).data
-  
-                  // document.getElementById('result').innerText = `Registration successful: ${result.message || 'Welcome!'}`;
+      message.success('Registration successful')
+   
         setLoading(false) 
         setSuccess(true)  
-    
+   
 
         setName('')
         setEmail('')
         setPassword('')
         setCpassword('')
-
+navigate('/login')
      
         
         
@@ -88,7 +90,7 @@ async function register(){
             </button>
            
           <div className='mt-3'style={{ textAlign: 'right' }}>
-          <p><a href='/login'  style={{ textDecoration: 'none' }}>sign in</a></p>
+          <p>Already have an account?<Link to='/login'  style={{ textDecoration: 'none' }}>sign in</Link></p>
           </div>
                 </div>
                 

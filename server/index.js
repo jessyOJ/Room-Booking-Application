@@ -1,16 +1,14 @@
-const mongoose = require('mongoose')
-const express = require('express')
+
+import express from "express"
+import cors from "cors"
+import connectDB from "./dbConnect.js"
 const app = express()
-const cors = require('cors');
 app.use(cors());
-const rooms = require('./router/rooms')
-const user =require('./router/User')
-const bookings=require('./router/BookingDetails')
-mongoose.connect('mongodb://localhost:27017/hotel-booking', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true})
-.then(()=>console.log('connected successfully...'))
-.catch((e)=> console.log('unable to connect....', e.message))
+connectDB()
+import rooms from './router/rooms.js'
+import user from './router/User.js'
+import bookings from './router/BookingDetails.js'
+
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json())

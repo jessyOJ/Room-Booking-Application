@@ -2,12 +2,14 @@ import React, {useEffect } from "react";
 import { Tabs } from "antd";
 import MyBookings from "../components/MyBookings";
 import MyProfile from "../components/MyProfile";
+import { useNavigate } from "react-router-dom";
 function Profilescreen() {
   const { TabPane } = Tabs;
+  const navigate =useNavigate()
   const user = JSON.parse(localStorage.getItem("currentUser"));
   useEffect(() => {
     if (!user) {
-      return (window.location.href = "/login");
+      return (navigate ("/login"));
     }
   }, []);
 
