@@ -1,10 +1,12 @@
 import React ,{useState}from 'react'
 import axios from 'axios'
+import BASE_URL from "../config.js"
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import Success from "../components/Success"
 import {useNavigate,Link}from  "react-router-dom"
 import { message } from 'antd';
+import "../resources/registerscreen.css"
 function Registerscreen() {
 const [name,setName] = useState('')
 const [email,setEmail]= useState('')
@@ -26,7 +28,7 @@ async function register(){
     }
     try {
       setLoading(true)
-      const response = (await axios.post('/api/hotel-booking/register',user)).data
+      const response = (await axios.post(`${BASE_URL}/api/hotel-booking/register`,user)).data
       message.success('Registration successful')
    
         setLoading(false) 
@@ -62,43 +64,56 @@ navigate('/login')
  }
 
 }
-
-  return (
-    <div>
-      {loading &&(<Loader/>)}
-        <div className='row justify-content-center mt-5'>
-            <div className='col-4 md-9'>
-                <div className='bs'style={{backgroundColor:"MistyRose" }} >
-                {error && <Error message={error} />}
-                {success &&(<Success message='Registration successful'/>)}
-                <h2 className='h2'style={{textAlign:'center'}}>Register</h2>
-                <input type='text' className='form-control mb-2'placeholder='name'
-                 value={name} onChange={(e)=>{setName(e.target.value)}}/> 
-                 <input type='text' className='form-control mb-2' placeholder='email'
-                 value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-                 <input type='text' className='form-control mb-2' placeholder='password'
-                 value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-                 <input type='text' className='form-control mb-2' placeholder='confirm Password'
-                 value={cpassword} onChange={(e)=>{setCpassword(e.target.value)}}/>
-
-
-        
-           <button className='btn btn-primary mt-3' 
-              style={{ backgroundColor: "palevioletred" }} 
-              onClick={register}>
-              Register
-            </button>
-           
-          <div className='mt-3'style={{ textAlign: 'right' }}>
-          <p>Already have an account?<Link to='/login'  style={{ textDecoration: 'none' }}>sign in</Link></p>
-          </div>
-                </div>
-                
-            </div>
-
+return (
+  <div className="register-container">
+    {loading && <Loader />}
+    <div className="register-box">
+      <div className="form-container">
+        {error && <Error message={error} />}
+        {success && <Success message="Registration successful" />}
+        <h2 className="register-header">Register</h2>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          className="form-control"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          className="form-control"
+          placeholder="Confirm Password"
+          value={cpassword}
+          onChange={(e) => setCpassword(e.target.value)}
+        />
+        <button className="btn btn-primary register-btn" onClick={register}>
+          Register
+        </button>
+        <div className="signin-link">
+          <p>
+            Already have an account?{' '}
+            <Link to="/login">Sign in</Link>
+          </p>
         </div>
-        </div>
-  )
+      </div>
+    </div>
+  </div>
+);
 }
+
 
 export default Registerscreen

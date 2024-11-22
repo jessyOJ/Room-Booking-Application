@@ -1,0 +1,82 @@
+/* Navbar.css */
+
+.navbar-container {
+    width: 100%;
+    background-color: black;
+    padding: 10px 0;
+  }
+  
+  .navbar {
+    padding: 0 20px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: MistyRose;
+    font-weight: bold;
+  }
+  
+  .navbar-brand:hover {
+    color: palevioletred;
+  }
+  
+  .nav-link {
+    color: MistyRose;
+    font-size: 1rem;
+  }
+  
+  .nav-link:hover {
+    color: palevioletred;
+  }
+  
+  .navbar-toggler-icon {
+    color: MistyRose;
+    font-size: 1.2rem;
+  }
+  
+  .user-dropdown {
+    color: MistyRose !important;
+    background-color: black;
+    font-size: 1rem;
+    border: none;
+  }
+  
+  .user-dropdown:hover {
+    color: palevioletred !important;
+  }
+  
+  .dropdown-menu {
+    background-color: black;
+    border: none;
+  }
+  
+  .dropdown-item {
+    color: MistyRose;
+  }
+  
+  .dropdown-item:hover {
+    color: palevioletred;
+    background-color: transparent;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 1.2rem;
+    }
+  
+    .nav-link, .user-dropdown {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .navbar-toggler-icon {
+      font-size: 1.5rem;
+    }
+  
+    .nav-link, .user-dropdown {
+      font-size: 0.8rem;
+    }
+  }
+  

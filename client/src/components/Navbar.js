@@ -1,5 +1,6 @@
 import React from "react";
-
+import "../resources/navbar.css"
+import {Link}from "react-router-dom"
 function Navbar() {
   function logout(){
     localStorage.removeItem('currentUser')

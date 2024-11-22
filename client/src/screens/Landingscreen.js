@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-
+import "../resources/landingscreen.css"
 // ..
 AOS.init(
     {duration:2000}
@@ -31,5 +31,6 @@ function Landingscreen() {
     </div>
   );
 }
+
 
 export default Landingscreen;

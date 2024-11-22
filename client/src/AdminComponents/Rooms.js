@@ -1,5 +1,6 @@
 import React,{useEffect,useState}from 'react'
 import axios from "axios";
+import BASE_URL from "../config.js"
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 function Rooms() {
@@ -10,7 +11,7 @@ useEffect(() => {
 const fetchRooms = async()=>{
 try {
     setLoading(true)
-    const response = await axios.get('/api/hotel-booking/getRooms')
+    const response = await axios.get(`${BASE_URL}/api/hotel-booking/getRooms`)
     const rooms = response.data
     setRooms(rooms)
     setLoading(false)

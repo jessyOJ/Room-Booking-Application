@@ -3,6 +3,7 @@ import { Tabs } from "antd";
 import MyBookings from "../components/MyBookings";
 import MyProfile from "../components/MyProfile";
 import { useNavigate } from "react-router-dom";
+import "../resources/profilescreen.css"
 function Profilescreen() {
   const { TabPane } = Tabs;
   const navigate =useNavigate()
@@ -14,8 +15,8 @@ function Profilescreen() {
   }, []);
 
   return (
-    <div className="ml-3 mt-3">
-      <Tabs defaultActiveKey="1">
+    <div className="dashboard-container">
+      <Tabs defaultActiveKey="1" centered>
         <TabPane tab="Profile" key="1">
           <MyProfile />
         </TabPane>
@@ -26,6 +27,7 @@ function Profilescreen() {
     </div>
   );
 }
+
 
 export default Profilescreen;
 

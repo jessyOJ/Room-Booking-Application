@@ -1,0 +1,44 @@
+
+.dashboard-container {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: #fff5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ant-tabs {
+    margin-top: 20px;
+  }
+  
+  .ant-tabs-nav {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ant-tabs-tab {
+    font-size: 16px;
+    color: palevioletred;
+  }
+  
+  .ant-tabs-tab:hover {
+    color: #c97a8b;
+  }
+  
+  .ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #c97a8b;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 576px) {
+    .dashboard-container {
+      padding: 15px;
+      margin: 10px;
+    }
+  
+    .ant-tabs-tab {
+      font-size: 14px;
+    }
+  }
+  

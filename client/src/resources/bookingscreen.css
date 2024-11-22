@@ -1,0 +1,87 @@
+/* BookingScreen.css */
+
+.booking-container {
+    margin: 20px;
+    padding-bottom: 40px;
+  }
+  
+  .booking-wrapper {
+    background-color: #ffe4e1;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .booking-image-section {
+    text-align: center;
+  }
+  
+  .booking-title {
+    color: palevioletred;
+    margin-bottom: 20px;
+  }
+  
+  .booking-image {
+    height:350px;
+    border-radius:5px;
+    width:50%
+  }
+  
+  .booking-details-section {
+    padding: 20px;
+  }
+  
+  .booking-details, .booking-amount {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  
+  .booking-details h2, .booking-amount h2 {
+    color: palevioletred;
+  }
+  
+  .pay-now-btn {
+    padding: 10px 20px;
+    background-color: palevioletred;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+  
+  .pay-now-btn:hover {
+    background-color: #d88493;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .booking-title {
+      font-size: 1.5rem;
+    }
+  
+    .booking-image {
+      width: 100%;
+    }
+  
+    .pay-now-btn {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .booking-wrapper {
+      padding: 10px;
+    }
+  
+    .booking-title {
+      font-size: 1.3rem;
+    }
+  
+    .pay-now-btn {
+      font-size: 0.8rem;
+    }
+  }
+  

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import BASE_URL from "../config.js"
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 export const Bookings = () => {
@@ -10,7 +11,7 @@ export const Bookings = () => {
     const fetchBookings = async () => {
       try {
         setloading(true);
-        const response = await axios.get("/api/hotel-booking/getAllBookings");
+        const response = await axios.get(`${BASE_URL}/api/hotel-booking/getAllBookings`);
         const bookings = response.data;
         setBooking(bookings);
         setloading(false);

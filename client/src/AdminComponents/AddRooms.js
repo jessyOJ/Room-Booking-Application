@@ -1,4 +1,5 @@
 import axios from 'axios'
+import BASE_URL from "../config.js"
 import React, { useEffect, useState } from 'react'
 import Loader from "../components/Loader";
 import Error from "../components/Error";
@@ -26,7 +27,7 @@ const [loading, setLoading] = useState('');
     try {
       setError(false);
       setLoading(true);
-      const response = await axios.post('/api/hotel-booking/createRoom',rooms);
+      const response = await axios.post(`${BASE_URL}/api/hotel-booking/createRoom`,rooms);
       const room = response.data;
       setLoading(false);
       Swal.fire('Congratulations', 'Room created successfully', 'success').then(() => {

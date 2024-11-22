@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import BASE_URL from "../config.js"
 function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setloading] = useState("");
@@ -11,7 +12,7 @@ function Users() {
     const fetchUsers = async () => {
       try {
         setloading(true);
-        const response = await axios.get("/api/hotel-booking/getAllUsers");
+        const response = await axios.get(`${BASE_URL}/api/hotel-booking/getAllUsers`);
         const users = response.data;
         setUsers(users);
         setloading(false);

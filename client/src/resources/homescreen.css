@@ -1,0 +1,65 @@
+/* HomeScreen.css */
+.home-container {
+    padding: 20px;
+    max-width: auto;
+    margin: 0 auto;
+    background-color: #FFE4E1;
+  }
+  
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .filter-item {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .rooms-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+  }
+  
+  .room-card {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .filter-row {
+      flex-direction: column;
+    }
+  
+    .filter-item {
+      width: 100%;
+    }
+  
+    .room-card {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .home-container {
+      padding: 10px;
+    }
+  
+    .room-card {
+      padding: 10px;
+    }
+  }
+  

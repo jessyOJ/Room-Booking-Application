@@ -1,6 +1,7 @@
 import React from "react";
 import { json, useParams } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../config.js"
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
@@ -10,6 +11,7 @@ import Swal from 'sweetalert2'
 import AOS from 'aos';
 import { useNavigate } from "react-router-dom";
 import 'aos/dist/aos.css'; 
+import "../resources/bookingscreen.css"
 AOS.init(
     {duration:1000}
 );
@@ -39,7 +41,7 @@ const navigate =useNavigate()
       try {
         setLoading(true);
         const response = (
-          await axios.post("/api/hotel-booking/getRoomsById", {
+          await axios.post(`${BASE_URL}/api/hotel-booking/getRoomsById`, {
             id:id,
           })
         ).data;
@@ -86,50 +88,43 @@ const navigate =useNavigate()
   }
 
   return (
-    <div className="m-3 mb-5"  data-aos='flip-left'>
-
+    <div className="booking-container" data-aos="flip-left">
       {loading ? (
         <Loader />
       ) : room ? (
-        <div className="row justify-content-center mt-1 bs">
-          <div className="col-md-6">
-            <h2 className="text-center">{room.name}</h2>
-            <img src={room.imgUrl[0]} className="bigimg" />
+        <div className="row justify-content-center booking-wrapper">
+          <div className="col-md-6 booking-image-section">
+            <h2 className="text-center booking-title">{room.name}</h2>
+            <img src={room.imgUrl[0]} className="booking-image" alt="Room" />
           </div>
-          <div className="col-md-6 ">
+          <div className="col-md-6 booking-details-section">
             <hr />
-
-            <div style={{ textAlign: "right" }}>
+            <div className="booking-details">
               <b>
                 <h2>Booking Details</h2>
-                <p>
-                  name:{JSON.parse(localStorage.getItem("currentUser")).name}
-                </p>
-                <p>from date: {fromDate}</p>
-                <p>to date: {toDate}</p>
-                <p> Max Count = {room.maxCount}</p>
+                <p>Name: {JSON.parse(localStorage.getItem("currentUser")).name}</p>
+                <p>From Date: {fromDate}</p>
+                <p>To Date: {toDate}</p>
+                <p>Max Count: {room.maxCount}</p>
               </b>
             </div>
-            <div style={{ textAlign: "right" }}>
+            <div className="booking-amount">
               <b>
                 <h2>Amount</h2>
                 <hr />
-                <p>Total per day: {totalDays}</p>
-                <p>Rent per day :{room.rentPerDay}</p>
-                <p>Total Amount:{totalAmount}</p>
+                <p>Total Days: {totalDays}</p>
+                <p>Rent per Day: NGN {room.rentPerDay}</p>
+                <p>Total Amount: NGN {totalAmount}</p>
               </b>
             </div>
-            <div style={{ float: "right" }}>
+            <div className="booking-actions">
               <StripeCheckout
                 amount={totalAmount * 100}
                 currency="NGN"
                 token={onToken}
                 stripeKey="pk_test_51QAULeGgyEOrbDfLMpnTQ4RzttjmyZpnqNCzF72325rE5DLPiHFaZfL7wkH7OBw7Zea8GA16d8lLqEmNpvlhLy9w004ZvpQGqf"
               >
-                <button
-                  className="btn btn-primary m-2"
-                  style={{ backgroundColor: "palevioletred" }}
-                >
+                <button className="btn btn-primary pay-now-btn" style={{float:"right"}}>
                   Pay Now
                 </button>
               </StripeCheckout>
@@ -142,5 +137,6 @@ const navigate =useNavigate()
     </div>
   );
 }
+
 
 export default Bookingscreen;

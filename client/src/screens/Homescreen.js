@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { DatePicker } from "antd";
 import "antd/dist/reset.css";
 import axios from "axios";
+import BASE_URL from "../config.js"
 import moment from "moment";
 import Room from "../components/Room";
 import Loader from "../components/Loader";
-import Error from "../components/Error";
-
+import "../resources/homescreen.css"
 function Homescreen() {
   const { RangePicker } = DatePicker;
   const [rooms, setRooms] = useState([]);
@@ -23,7 +23,7 @@ function Homescreen() {
     const fetchData = async () => {
       try {
         setloading(true);
-        const response = (await axios.get("/api/hotel-booking/getRooms")).data;
+        const response = (await axios.get(`${BASE_URL}/api/hotel-booking/getRooms`)).data;
         setRooms(response);
         setDuplicateRoom(response);
         setloading(false);
@@ -92,43 +92,47 @@ function filterByType(e) {
     setRooms(duplicateRoom);
   }
 }
-
-  return (
-    <div className="container">
-      <div className="row mt-5 bs">
-        <div className="col-md-3 ">
-          <RangePicker format="DD-MM-YYYY" onChange={filterDate} />
-         
-        </div>
-        <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="search rooms"
-            value={search} onChange={(e)=>{setSearch(e.target.value)}} onKeyUp={filterBySearch}/>
-          </div>
-          <div className="col-md-3 ">
-            <select className="form-control" value={type} onChange={(e)=>{filterByType(e.target.value)}}>
-              <option value="all">All</option>
-              <option value="dulexe">Dulexe</option>
-              <option value="non-dulexe">Non-Dulexe</option>
-            </select>
-
-          </div>
+return (
+  <div className="home-container">
+    <div className="filter-row">
+      <div className="filter-item">
+        <RangePicker format="DD-MM-YYYY" onChange={filterDate} />
       </div>
-      <div className="row justify-content-center mt-5">
-        {loading ? (
-          <Loader />
-        ) :(
-          rooms.map((room) => {
-            return (
-              <div className="col-md-9 mt-2">
-                <Room room={room} fromDate={fromDate} toDate={toDate} />
-              </div>
-            );
-          })
-        ) 
-        }
+      <div className="filter-item">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search rooms"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyUp={filterBySearch}
+        />
+      </div>
+      <div className="filter-item">
+        <select
+          className="form-control"
+          value={type}
+          onChange={(e) => filterByType(e.target.value)}
+        >
+          <option value="all">All</option>
+          <option value="dulexe">Dulexe</option>
+          <option value="non-dulexe">Non-Dulexe</option>
+        </select>
       </div>
     </div>
-  );
+    <div className="rooms-container">
+      {loading ? (
+        <Loader />
+      ) : (
+        rooms.map((room, index) => (
+          <div className="room-card" key={index}>
+            <Room room={room} fromDate={fromDate} toDate={toDate} />
+          </div>
+        ))
+      )}
+    </div>
+  </div>
+);
 }
 
 export default Homescreen;

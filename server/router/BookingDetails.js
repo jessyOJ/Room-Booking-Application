@@ -25,7 +25,7 @@ router.post('/bookings',async(req,res)=>{
 
 // if(payment){
     try {
-    const newBookings = new BookingsModel({
+    const newBookings = new Bookings({
         room:room.name,
         roomId:room._id,
         userId:userId,
@@ -59,7 +59,7 @@ res.send('payment successful,room is booked')
 router.post('/getBookingById',async(req,res)=>{
     const userId = req.body.userId
 try {  
-    const bookings = await BookingsModel.find({userId:userId})
+    const bookings = await Bookings.find({userId:userId})
 res.send(bookings)
 } catch (error) {
     res.status(400).json({error})
@@ -67,7 +67,7 @@ res.send(bookings)
 })
 router.post('/cancelBooking',async(req,res)=>{
     const {bookingId,roomId} = req.body
-    const bookingItem = await BookingsModel.findOne({_id:bookingId})
+    const bookingItem = await Bookings.findOne({_id:bookingId})
     bookingItem.status='Cancelled'
 await bookingItem.save()
 const room = await Rooms.findOne({_id:roomId})
@@ -79,7 +79,7 @@ res.send('room cancelled sucessfully')
 
 })
 router.get('/getAllBookings', async(req,res)=>{
-    const bookings =await  BookingsModel.find()
+    const bookings =await  Bookings.find()
     res.send(bookings)
 })
 export default router

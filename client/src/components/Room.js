@@ -15,8 +15,8 @@ function Room({ room ,fromDate,toDate}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <div className="row bs " data-aos="zoom-out-up" >
-      <div className="col-md-4">
+    <div className="row  bs " data-aos="zoom-out-up" >
+      <div className=" col-md-4 ">
         <img src={room.imgUrl[0]} className="smallimg" />
       </div>
       <div className="col-md-7 text-left">
