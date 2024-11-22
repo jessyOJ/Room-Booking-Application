@@ -12,9 +12,10 @@ import Landingscreen from './screens/Landingscreen';
 function App() {
   return (
     <div className="App">
-        <Navbar/>
+      
 
     <BrowserRouter>
+      <Navbar/>
     <Routes>
     <Route path='/home' element={<Homescreen/>}/>
     <Route path='/book/:id/:fromDate/:toDate' element={<Bookingscreen/>}/>
